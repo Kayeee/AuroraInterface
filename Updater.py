@@ -4,6 +4,9 @@ from celery import Celery
 import tasks
 import subprocess
 
+app = Celery('tasks', backend='amqp',
+                      broker='amqp://Kevin:ASUi3dea@54.186.216.79/pi_env')
+
 @app.task
 def updateAuroraC():
     subprocess.call(["sudo", "rm", "aurora"], cwd="/usr/local/bin")
