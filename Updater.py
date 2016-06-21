@@ -1,7 +1,5 @@
-from inverterInterface import Inverter, ConnectionException
 from celery import Celery
 
-import tasks
 import subprocess
 
 app = Celery('tasks', backend='amqp',
