@@ -1,4 +1,6 @@
 from celery import Celery
+from inverterInterface import Inverter, ConnectionException
+from tasks import *
 
 import subprocess
 
