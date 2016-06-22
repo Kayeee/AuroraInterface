@@ -24,6 +24,7 @@ def initInverter(address, port):
 def getAll(address, stringNum = "0"):
     inverter = Inverter()
     result = inverter.getAll("0")
+    return result
     # try:
     #     result = JSONify(inverters[address].getAll(stringNum))
     #     return result
