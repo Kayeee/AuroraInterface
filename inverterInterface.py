@@ -8,10 +8,6 @@ class Inverter:
     address = "2"
     serialPort = "/dev/ttyUSB0"
 
-    def __init__(self, address, serialPort):
-        self.address = address
-        self.serialPort = serialPort
-
     def getCumulatedEnergies(self):
         result = subprocess.call(["aurora", "-a", self.address, "-e", "-J", self.serialPort])
         return result
