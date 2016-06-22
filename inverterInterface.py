@@ -9,44 +9,54 @@ class Inverter:
     serialPort = "/dev/ttyUSB0"
 
     def getCumulatedEnergies(self):
-        result = subprocess.call(["aurora", "-a", self.address, "-e", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-e", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getDSP(self, stringNum = "0"):
-        result = subprocess.call(["aurora", "-a", self.address, "-d", stringNum, "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-d", stringNum, "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getPartNum(self):
-        result = subprocess.call(["aurora", "-a", self.address, "-p", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-p", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getSerialNum(self):
-        result = subprocess.call(["aurora", "-a", self.address, "-n", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-n", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getFirmWare(self):
-        result = subprocess.call(["aurora", "-a", self.address, "-f", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-f", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getManufacturingDate(self):
-        result = subprocess.call(["aurora", "-a", self.address, "-m", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-m", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getVersion(self):
-        result = subprocess.call(["aurora", "-a", self.address, "-v", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-v", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getAll(self, stringNum = "0"):
-        result = subprocess.call(["aurora", "-a", self.address, "-e", "-d", stringNum, "-p", "-n", "-f", "-m", "-v", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-e", "-d", stringNum, "-p", "-n", "-f", "-m", "-v", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getData(self, stringNum = "0"):
-        result = subprocess.call(["aurora", "-a", self.address, "-e", "-d", stringNum, "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address, "-e", "-d", stringNum, "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def getInfo(self):
-        result = subprocess.call(["aurora", "-a", self.address,  "-p", "-n", "-f", "-m", "-v", "-J", self.serialPort])
-        return result
+        result = subprocess.Popen(["aurora", "-a", self.address,  "-p", "-n", "-f", "-m", "-v", "-J", self.serialPort], stdout=subprocess.PIPE)
+        out, err = result.communicate()
+        return out
 
     def checkException(self, result):
         if "ERROR:" in result:
