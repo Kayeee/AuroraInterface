@@ -5,7 +5,7 @@ class ConnectionException(Exception):
     pass
 
 class Inverter:
-    address = "0"
+    address = "2"
     serialPort = "/dev/ttyUSB0"
 
     def __init__(self, address, serialPort):

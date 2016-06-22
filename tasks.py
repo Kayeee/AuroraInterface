@@ -3,8 +3,8 @@ from celery import Celery
 
 app = Celery('tasks', backend='amqp',
                       broker='amqp://Kevin:ASUi3dea@54.186.216.79/pi_env')
-
-inverters = {}
+inverter = Inverter()
+inverters = {inverter}
 
 @app.task
 def add(x, y):
@@ -22,13 +22,15 @@ def initInverter(address, port):
 
 @app.task
 def getAll(address, stringNum = "0"):
-    try:
-        result = JSONify(inverters[address].getAll(stringNum))
-        return result
-    except ConnectionException:
-        return "Error: Cannot connect to inverter."
-    except KeyError:
-        return "Error: Address not found."
+    inverter = Inverter()
+    result = inverter.getAll("0")
+    # try:
+    #     result = JSONify(inverters[address].getAll(stringNum))
+    #     return result
+    # except ConnectionException:
+    #     return "Error: Cannot connect to inverter."
+    # except KeyError:
+    #     return "Error: Address not found."
 
 def JSONify(data):
     return "{" + data + "}"
