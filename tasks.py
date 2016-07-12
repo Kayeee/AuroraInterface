@@ -2,7 +2,7 @@ from inverterInterface import Inverter, ConnectionException
 from celery import Celery
 
 app = Celery('tasks', backend='amqp',
-                      broker='amqp://Kevin:ASUi3dea@54.186.216.79/pi_env')
+                      broker='amqp://Kevin:ASUi3dea@54.224.107.102/pi_env')
 inverter = Inverter()
 inverters = {inverter}
 
