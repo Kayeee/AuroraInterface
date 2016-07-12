@@ -5,7 +5,7 @@ from tasks import *
 import subprocess
 
 app = Celery('tasks', backend='amqp',
-                      broker='amqp://Kevin:ASUi3dea@54.186.216.79/pi_env')
+                      broker='amqp://Kevin:ASUi3dea@54.224.107.102/pi_env')
 
 @app.task
 def updateAuroraC():
