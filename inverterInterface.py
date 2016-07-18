@@ -44,7 +44,7 @@ class Inverter:
         return out
 
     def getAll(self, stringNum = "0"):
-        result = subprocess.Popen(["aurora", "-a", self.address, "-e", "-d", stringNum, "-p", "-n", "-f", "-m", "-v", "-J", self.serialPort, "-Y", "10",] stdout=subprocess.PIPE)
+        result = subprocess.Popen(["aurora", "-a", self.address, "-e", "-d", stringNum, "-p", "-n", "-f", "-m", "-v", "-J", self.serialPort, "-Y", "10"] stdout=subprocess.PIPE)
         out, err = result.communicate()
         return out
 
