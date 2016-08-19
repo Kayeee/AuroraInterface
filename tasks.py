@@ -39,6 +39,7 @@ def updateAuroraC():
     subprocess.call(["make", "clean"], cwd="Documents/i3dea/aurora-1.9.0")
     subprocess.call(["git", "pull", "origin", "master"], cwd="Documents/i3dea/aurora-1.9.0") #need ssh key for this
     subprocess.call(["sudo", "make", "install"], cwd="Documents/i3dea/aurora-1.9.0")
+    return "Complete"
 
 def JSONify(data):
     return "{" + data + "}"
