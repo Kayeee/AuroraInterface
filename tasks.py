@@ -1,6 +1,6 @@
 from inverterInterface import Inverter, ConnectionException
 from celery import Celery
-
+#test
 import subprocess
 import random
 
