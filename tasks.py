@@ -1,10 +1,11 @@
 from inverterInterface import Inverter, ConnectionException
 from celery import Celery
-#test
+
 import subprocess
 import random
 
 app = Celery('interface_worker', backend='amqp', broker='amqp://Kevin:ASUi3dea@52.87.223.187/pi_env')
+app.config_from_object('celeryconfig')
 
 @app.task(name='addTask')
 def add(x, y):
