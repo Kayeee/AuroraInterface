@@ -6,7 +6,7 @@ import random
 
 app = Celery('tasks', backend='amqp', broker='amqp://Kevin:ASUi3dea@52.87.223.187/pi_env')
 
-@app.task
+@app.task(name='addTask')
 def add(x, y):
     return x+y
 

@@ -4,8 +4,8 @@ from celery import Celery
 
 import subprocess
 
-app = Celery('tasks', backend='amqp',
-                      broker='amqp://Kevin:ASUi3dea@54.224.107.102/pi_env')
+app = Celery('updater_worker', backend='amqp',
+                      broker='amqp://Kevin:ASUi3dea@52.87.223.187/pi_env')
 
 @app.task(name="updater.updateAuroraC")
 def updateAuroraC():
@@ -17,4 +17,5 @@ def updateAuroraC():
 @app.task(name="updater.updateTasksAndInterface")
 def updateTasksAndInterface():
     subprocess.call(["git", "pull", "origin", "master"], cwd="/home/pi/ASUi3dea")
-    subprocess.call(["sudo", "celery", "multi", "restart", "workerB", "-A", "tasks"], cwd="/home/pi/ASUi3dea")
+    subprocess.call(["celery", "multi", "stop", "interface_worker", "-A", "tasks"], cwd="/home/pi/ASUi3dea")
+    subprocess.call(["celery", "multi", "start", "interface_worker", "-A", "tasks"], cwd="/home/pi/ASUi3dea")
