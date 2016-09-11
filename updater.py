@@ -17,5 +17,5 @@ def updateAuroraC():
 @app.task(name="updater.updateTasksAndInterface")
 def updateTasksAndInterface():
     subprocess.call(["git", "pull", "origin", "master"], cwd="/home/pi/ASUi3dea")
-    subprocess.call(["celery", "multi", "stop", "interface_worker", "-A", "tasks"], cwd="/home/pi/ASUi3dea")
-    subprocess.call(["celery", "multi", "start", "interface_worker", "-A", "tasks"], cwd="/home/pi/ASUi3dea")
+    subprocess.call(["celery", "multi", "stop", "interface_worker", "-A", "tasks", "-Q", "interface"], cwd="/home/pi/ASUi3dea")
+    subprocess.call(["celery", "multi", "start", "interface_worker", "-A", "tasks","-l", "info", "-Q", "interface"], cwd="/home/pi/ASUi3dea")
