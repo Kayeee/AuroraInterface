@@ -18,6 +18,9 @@ def recordlog(result, filename):
     file.write(result)
     file.close()
 
+@app.task(name="updater.reboot_pi")
+def reboot_pi():
+    subprocess.check_output(["sudo","reboot"], cwd="/home/pi/ASUi3dea")
 
 @app.task(name="updater.updateAuroraC")
 def updateAuroraC():
