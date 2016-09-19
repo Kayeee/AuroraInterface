@@ -39,7 +39,7 @@ def start_interface():
     result = subprocess.check_output(["rm", "-rf", "interface_worker.pid"], cwd="/home/pi/ASUi3dea") 
     result = subprocess.check_output(["rm", "-rf", "interface_worker.log"], cwd="/home/pi/ASUi3dea") 
     print result
-    result += subprocess.check_output(["celery", "multi", "start", "interface_worker", "-A", "tasks", "-l", "debug", "-Q", "interface"], cwd="/home/pi/ASUi3dea")
+    result += subprocess.check_output(["celery", "multi", "start", "interface_worker", "-A", "tasks", "-l", "info", "-Q", "interface"], cwd="/home/pi/ASUi3dea")
     print result
     file.write(result)
 
@@ -50,7 +50,7 @@ def start_updater():
     print result
     result = subprocess.check_output(["rm", "-rf", "updater_worker.log"], cwd="/home/pi/ASUi3dea") 
     print result
-    result += subprocess.check_output(["celery", "multi", "start", "updater_worker", "-A", "updater", "-l", "debug", "-Q", "updater"], cwd="/home/pi/ASUi3dea")
+    result += subprocess.check_output(["celery", "multi", "start", "updater_worker", "-A", "updater", "-l", "info", "-Q", "updater"], cwd="/home/pi/ASUi3dea")
     print result
     file.write(result)
 
