@@ -5,6 +5,8 @@ class ConnectionException(Exception):
     pass
 
 class Inverter:
+    pi_id = "9tbq99yewgwr3yhkykqkd900"
+    id = "9tbq99yewgwr3yhkykqkd900-0"
     address = "2"
     serialPort = "/dev/ttyUSB0"
 

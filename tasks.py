@@ -1,5 +1,6 @@
 from inverterInterface import Inverter, ConnectionException
 from celery import Celery
+from request_sender import start
 #test2
 import subprocess
 import random
@@ -33,6 +34,10 @@ def getAll(address, stringNum = "0"):
     #     return "Error: Cannot connect to inverter."
     # except KeyError:
     #     return "Error: Address not found."
+
+@app.task(name='startCollecting')
+def startCollecting():
+    start()
 
 @app.task(name='getAlle')
 def getAlle(address, stringNum = "0"):
